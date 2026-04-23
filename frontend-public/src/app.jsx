@@ -20,7 +20,7 @@ export default function App() {
                             <div style={{ width: 12, height: 12, background: 'white', borderRadius: '50%', boxShadow: '0 0 10px white' }} />
                         </div>
                         <div>
-                            <div className="logo-title">ResQNet</div>
+                            <div className="logo-title">CloudResQ</div>
                             <div className="logo-sub">EMERGENCY OPERATIONS</div>
                         </div>
                     </div>

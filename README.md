@@ -1,4 +1,4 @@
-🌪️ ResQNet — Intelligent Disaster Response System
+🌪️ CloudResQ — Intelligent Disaster Response System
 
 A real-time, cloud-native disaster response platform designed to enable rapid incident reporting, multi-role coordination, and efficient emergency handling using modern web and distributed system principles.
 

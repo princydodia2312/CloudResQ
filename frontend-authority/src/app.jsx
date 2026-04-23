@@ -39,7 +39,7 @@ function AuthorityApp() {
                             <div className="logo-title" style={{ color: "var(--purple)" }}>
                                 AUTHORITY COMMAND CENTRE
                             </div>
-                            <div className="logo-sub">RESQNET OPERATIONAL PORTAL</div>
+                            <div className="logo-sub">CLOUDRESQ OPERATIONAL PORTAL</div>
                         </div>
                     </div>
                 </div>
