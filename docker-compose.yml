@@ -1,0 +1,68 @@
+services:
+  # ── Backend API ────────────────────────────────────────────────
+  backend:
+    build: ./backend
+    container_name: disaster-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - CLOUDFRONT_URL=${CLOUDFRONT_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - S3_BUCKET=${S3_BUCKET}
+      - AUTHORITY_PASSWORD=${AUTHORITY_PASSWORD}
+      - RESCUE_PASSWORD=${RESCUE_PASSWORD}
+    restart: unless-stopped
+    networks:
+      - disaster-net
+
+  # ── Public App — Citizens (port 3000) ─────────────────────────
+  frontend-public:
+    build:
+      context: ./frontend-public
+      args:
+        - VITE_API_URL=http://localhost:5000
+    container_name: disaster-public
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - disaster-net
+
+  # ── Authority App — Command Centre (port 3001) ────────────────
+  frontend-authority:
+    build:
+      context: ./frontend-authority
+      args:
+        - VITE_API_URL=http://localhost:5000
+    container_name: disaster-authority
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - disaster-net
+
+  # ── Rescue App — Field Teams (port 3002) ──────────────────────
+  frontend-rescue:
+    build:
+      context: ./frontend-rescue
+      args:
+        - VITE_API_URL=http://localhost:5000
+    container_name: disaster-rescue
+    ports:
+      - "3002:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - disaster-net
+
+# ── Shared network so all containers can talk to each other ─────
+networks:
+  disaster-net:
+    driver: bridge

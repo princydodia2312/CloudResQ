@@ -1,0 +1,38 @@
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+build/
+dist/
+*.egg-info/
+
+# Node / Frontend
+node_modules/
+dist-ssr/
+*.local
+.pnpm-debug.log*
+
+# Docker
+.docker/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+/build_log.txt
+/build_error.txt
+/backend/data/uploads/
